@@ -1,0 +1,20 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.button-select{
+    color: rgb(221, 86, 86);
+    width: 130px;
+    height: 30px;
+}
+
+.body-darck{
+    background-color: rgb(30, 30, 30);
+}
+.body-light{
+    background-color: white;
+}

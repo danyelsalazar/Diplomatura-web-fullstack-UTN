@@ -1,0 +1,205 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100vw;
+    height: 100vh;
+}
+main.active{
+    opacity: .7;
+}
+main{
+    z-index: 5;
+    transition: opacity .3s ease;
+}
+/*encabezado*/
+header{
+    width: 100%;
+    height: 7vh;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10px;
+    position:fixed;
+    z-index: 100;
+}
+.contenedor-img{
+    width: 20%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.contenedor-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    
+}
+nav{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75%;
+    height: 100vh;
+    display: flex;
+    gap: 30%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: rgb(255, 255, 255);
+    padding: 0px 10px 0px 10px;
+    display: none;
+    z-index: 10;
+}
+.nav-desplegar{
+    display: flex;
+}
+nav ul{
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    opacity: 1;
+}
+
+nav ul li{
+    padding: 10px;
+    text-align: center;
+    width: 100px;
+    border-bottom: 1px solid black;
+}
+a{
+    text-decoration: none;
+    color: rgb(30, 31, 32);
+    font-size: 15px;
+}
+
+.btn-abrir-menu, .btn-cerrar-menu{
+    font-size: 2rem;
+}
+
+/*main*/
+
+.section-uno{
+    background-image: url('https://static.nike.com/a/images/f_auto,cs_srgb/w_1536,c_limit/bf64869a-c04c-4b25-b06c-c446be4180d7/ya-puedes-comprar-estas-ideas-de-looks-monocrom%C3%A1ticos-nike.jpg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-attachment: fixed;
+
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    top: 7vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.section-uno h1,p{
+    color: aliceblue;
+}
+
+.section-uno p{
+    text-align: center;
+    padding: 20px;
+}
+
+/*section -dos*/
+.section-dos{
+    position: relative;
+    top: 6vh;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.section-dos h2{
+   width: 100%;
+   padding: 20px;
+   font-size: 18px;
+   padding-top: 0;
+}
+.texto-titulo-seccion-dos{
+    width: 100%;
+    padding: 35px 20px 0px 20px;
+    margin: 0;
+    color: black;
+    text-align: start;
+
+}
+
+.contenedor-trajetas{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.tarjeta-producto{
+    width: 49%;
+    height: 54.5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-producto{
+    width: 100%;
+    height: 49%;
+    overflow: hidden;
+}
+.img-producto img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.contenedor-info-producto{
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-producto{
+    color: rgb(40,40,40);
+    font-size: 14px;
+    margin: 0;
+}
+
+.descuento-producto{
+    color: rgb(2,125,72);
+}
+.parrafo-descripcion-producto, .precio-producto{
+    color: rgb(112,112,114);
+    margin: 0;
+}
+.precio-producto{
+    margin-top: 10px;
+}
+.parrafo-descripcion-producto{
+    font-size: 13px;
+}
+.precio-producto{
+    color: rgb(17,17,17);
+}
+.contenedor-info-total-producto{
+    padding: 10px;
+}
+
+.texto-naranja{
+    color: rgb(211,57,23);
+    font-size: 12px;
+    margin: 0;
+}

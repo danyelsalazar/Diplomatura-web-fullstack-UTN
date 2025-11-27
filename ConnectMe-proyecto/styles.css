@@ -1,0 +1,164 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+    background-color: rgb(42, 42, 42);
+    padding-top: 50px;
+}
+.menu-cerrado{
+    position: fixed;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: rgb(42, 42, 42);
+    box-shadow: 0px -10px 30px rgb(5, 5, 5);
+}
+.content-burger-rotate{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    height: 100%;
+    /*preparamos la animacion 3d*/
+    transform-style: preserve-3d;
+    transition: transform 0.6s ease;
+    perspective: 800px;
+    z-index: 1000;
+}
+
+.icon-menu{
+    font-size: 40px;
+    color: aliceblue;
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+
+/*icono frontakl(hamburguesa*/
+.icon-front{
+    transform: rotateY(0deg);
+}
+/* Ícono trasero (X) */
+.icon-back {
+    transform: rotateY(180deg);
+    font-size: 30px;
+    
+}
+
+/*Ciando el usuario haga click*/
+.content-burger-rotate.active{
+    transform: rotateY(180deg);
+}
+
+.contenedor-logo{
+    display: inline-block;
+    width: 30%;
+    height: 100%;
+    overflow: hidden;
+}
+.contenedor-logo img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/*menu abierto*/
+
+.menu-abierto{
+    position: fixed;
+    top: 0;
+    transform: translateX(-1000px);
+    width: 80vw;
+    height: 100vh;
+    background-color: rgb(42, 42, 42);
+    z-index: 0;
+    transition: transform .5s ease;
+    z-index: 100;
+}
+.menu-abierto.active{
+    transform: translateX(0px);
+}
+ul{
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+.navegador li{
+    text-align: center;
+    padding: 15px;
+    background-color: aliceblue;
+}
+ul li a{
+    text-decoration: none;
+    font-size: 1rem;
+    color:  rgb(42, 42, 42);
+}
+section {
+    transition: all .5s;
+}
+section.active{
+    opacity: .5;
+}
+.section-inicio{
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.inicio-info{
+    display: flex;
+    gap: .5em;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+    height: 40%;
+}
+.inicio-info h1, p{
+    color:  aliceblue;
+}
+.inicio-info h1{
+    font-size: 40px;
+    background: linear-gradient(90deg, #4db8ff, #7b61ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.inicio-info p{
+    padding: 0px 10px 0px 15px;
+    font-size: 18px;
+}
+.inicio-imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 50%;
+    overflow: hidden;
+}
+.inicio-imagen img{
+    width: 90%;
+    height: 85%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0,0,0,.5);
+    filter: drop-shadow(0 0 10px rgba(0,0,0,.5));
+}
