@@ -3,12 +3,20 @@ const $inputemail = document.getElementById("email")
 const $form = document.querySelector("form")
 const $contactsList = document.querySelector("tbody")
 
-console.log($inputemail);
+// console.log($inputemail);
+// console.log(localStorage, "----datos aquiii-----");
 
-let contactos = []
-// event.preventDefault
+//creamos un arreglo vacio, este arreglo va a ser un array de objetos que contendra todos los contactos para poder ir cargandolo y mostrandolos en el DOM , SI el localStorage tiene contactos registrados estos se cargaran al arreglo contactos, si no este se inizializa vacio:
+let contactos = JSON.parse(localStorage.getItem("lista")) || []
 
-//reflejamos el contenido en el html
+
+//apenas carga nuestra pagina mostramos los datos que esten guardados en el arreglo contactos que ya cuando lo creamos el verifica si existen contactos guardados en el localStorage para cargarlos en el arreglo
+document.addEventListener('DOMContentLoaded', ()=>{
+    renderContact()
+})
+
+
+//funcion para reflejamos el contenido en el html
 const renderContact = () =>{
     //1 crear en js una fila de tablas
     //2 aniadirle contenido html
@@ -29,6 +37,8 @@ const renderContact = () =>{
 
 const sendForm = (event) =>{
     event.preventDefault()//evitamos que se recargue la pagiuna al hacer click en eln boton
+
+    // consolas para ir verificando cada dato que se va cargando:
     console.log(`nombre: ${$inputName.value}`);
     console.log(`email: ${$inputemail.value}`);
     
@@ -38,12 +48,19 @@ const sendForm = (event) =>{
         email: $inputemail.value
     }
 
-    contactos.push(newContact)
+    contactos.push(newContact)//guardamos el contacto en el arreglo
+    let contactosString = JSON.stringify(contactos)//convertimos el arreglo de contactos en string
+    localStorage.setItem("lista", contactosString)//vamos guardando el arreglocontacto en el localStorage, cada vez que carguemos un nuevo contacto el string "arreglo" se ira modificando
+
     $form.reset() //cuando hagamos clic se reseteara los valores de los inputs asi se limpia el campo y podemos escribir uno nuevo
+
+    //consola para ir vuendo el arreglo de objetos contacto a medida que le vamos cargando los datos
     console.log(contactos);
 
+    // llamamos a la funcion que muestra los contactos en la lista:
     renderContact()
     
 }
 
+//cada vez que enviemos el formulario:
 $form.addEventListener("submit", sendForm)
