@@ -20,6 +20,18 @@ document.addEventListener('DOMContentLoaded', ()=>{
     renderContact()
 })
 
+
+//--------------------funcion para usar localStoraje sin repetir codigo:
+//---------------------------
+
+const CRUDLocalStorage = ()=>{
+    let contactosString = JSON.stringify(contactos)//convertimos el arreglo de contactos en string
+        localStorage.setItem("lista", contactosString)//vamos guardando el arreglocontacto en el localStorage, cada vez que carguemos o actualicemos un contacto el string  que es un "arreglo" se ira modificando
+
+}
+
+
+
 //--------------funcion para reflejamos el contenido en el html
 //--------------------------------------------
 
@@ -34,7 +46,7 @@ const renderContact = () =>{
         <td>${contacto.name}</td>
         <td>${contacto.email}</td>
         <td><button class= "editar-contact" onclick = "actualizarContact(${i})">Editar</button>
-            <button class ="eliminar-contact">Eliminar</button></td> 
+            <button class ="eliminar-contact" onclick ="eliminarContacto(${i})">Eliminar</button></td> 
         </tr>`
         // console.log(bloqueAcumulado); //para ir viendo el mstring que se va generando que tiene las etiquetas
     })
@@ -57,8 +69,8 @@ const sendForm = (event) =>{
     }
 
     contactos.push(newContact)//guardamos el contacto en el arreglo
-    let contactosString = JSON.stringify(contactos)//convertimos el arreglo de contactos en string
-    localStorage.setItem("lista", contactosString)//vamos guardando el arreglocontacto en el localStorage, cada vez que carguemos un nuevo contacto el string "arreglo" se ira modificando
+    
+    CRUDLocalStorage()
 
     $form.reset() //cuando hagamos clic se reseteara los valores de los inputs asi se limpia el campo y podemos escribir uno nuevo
 
@@ -94,9 +106,7 @@ const actualizarContact = (i)=>{
 
         contactos[i] = contactoActualizado
 
-        let contactosString = JSON.stringify(contactos)//convertimos el arreglo de contactos en string
-        localStorage.setItem("lista", contactosString)//vamos guardando el arreglocontacto en el localStorage, cada vez que actualicemos un contacto el string  que es un "arreglo" se ira modificando
-
+        CRUDLocalStorage()
         
         // console.log(contactos[i]);//para ir viendo que se actualizo en el arreglo
 
@@ -114,4 +124,16 @@ const actualizarContact = (i)=>{
 //------------------eliminar contacto
 //------------------------------------
 
+const eliminarContacto = (i)=>{
+    // console.log(i);
 
+    let confirmarEliminacion= confirm(`seguro que quiere eliminar el contacto de ${contactos[i].name}?`) //preguntamos si desea eliminar el contacto antes de eliminarlo
+    
+    if (confirmarEliminacion){
+        contactos.splice(i,1)
+        // console.log(contactos);//para ir verificando que se van elimianndo el contacto del arreglo
+        CRUDLocalStorage() // cargamos el arreglo ya sin el contacto eliminado al localStorage
+        renderContact()//renderizamos la lista de contactos que se muestra en pantalla
+    }
+    
+}
