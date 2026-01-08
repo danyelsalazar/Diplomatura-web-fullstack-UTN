@@ -1,7 +1,12 @@
 const $inputName = document.getElementById("name")
 const $inputemail = document.getElementById("email")
-const $form = document.querySelector("form")
+const $form = document.querySelector(".inputs")
 const $contactsList = document.querySelector("tbody")
+const $btnEditar = document.querySelector(".editar-contact")
+const $formActualizacion = document.getElementById("formActualizacion")
+const $btnNameActualizado = document.getElementById("name-actualizado")
+const $btnEmailActualizado = document.getElementById("email-actualizado")
+const $containactualizacion = document.querySelector(".container-actualizacion")
 
 // console.log($inputemail);
 // console.log(localStorage, "----datos aquiii-----");
@@ -15,26 +20,29 @@ document.addEventListener('DOMContentLoaded', ()=>{
     renderContact()
 })
 
+//--------------funcion para reflejamos el contenido en el html
+//--------------------------------------------
 
-//funcion para reflejamos el contenido en el html
 const renderContact = () =>{
     //1 crear en js una fila de tablas
     //2 aniadirle contenido html
     //3 agregar la fila a la tabla
     let bloqueAcumulado = ``
-    contactos.forEach((contacto)=>{
+    contactos.forEach((contacto, i)=>{
 
         bloqueAcumulado += `<tr>
         <td>${contacto.name}</td>
         <td>${contacto.email}</td>
-        <td><button>Editar</button>
-            <button>Eliminar</button></td> 
+        <td><button class= "editar-contact" onclick = "actualizarContact(${i})">Editar</button>
+            <button class ="eliminar-contact">Eliminar</button></td> 
         </tr>`
         // console.log(bloqueAcumulado); //para ir viendo el mstring que se va generando que tiene las etiquetas
     })
     $contactsList.innerHTML = bloqueAcumulado
 }
 
+//----------funcion para cargar contacto:
+//--------------------------------------------
 const sendForm = (event) =>{
     event.preventDefault()//evitamos que se recargue la pagiuna al hacer click en eln boton
 
@@ -61,6 +69,49 @@ const sendForm = (event) =>{
     renderContact()
     
 }
-
-//cada vez que enviemos el formulario:
+//-----------cada vez que enviemos el formulario:
 $form.addEventListener("submit", sendForm)
+
+
+
+//----------------Funcion para actualizar contactos
+//-------------------------------------------------
+
+const actualizarContact = (i)=>{
+    console.log(i)//nos muestra el indice del comntacto que estamos clikeando
+
+    $containactualizacion.classList.remove("container-actualizacion")
+    $containactualizacion.classList.add("container-actualizacion-view")
+
+    $formActualizacion.addEventListener("submit",(e)=>{
+
+        e.preventDefault(); //evitamos que se recargue la pagina
+
+        let contactoActualizado = {
+            name: $btnNameActualizado.value,
+            email: $btnEmailActualizado.value
+        }
+
+        contactos[i] = contactoActualizado
+
+        let contactosString = JSON.stringify(contactos)//convertimos el arreglo de contactos en string
+        localStorage.setItem("lista", contactosString)//vamos guardando el arreglocontacto en el localStorage, cada vez que actualicemos un contacto el string  que es un "arreglo" se ira modificando
+
+        
+        // console.log(contactos[i]);//para ir viendo que se actualizo en el arreglo
+
+        $formActualizacion.reset() 
+
+        //llamamos a la funcion que renderiza el contenido visual
+        renderContact()
+        $containactualizacion.classList.remove("container-actualizacion-view")
+        $containactualizacion.classList.add("container-actualizacion")
+
+    })
+    
+}
+
+//------------------eliminar contacto
+//------------------------------------
+
+

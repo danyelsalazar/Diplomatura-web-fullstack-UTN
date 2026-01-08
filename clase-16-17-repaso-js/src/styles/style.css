@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 20px;
+}
+.container-crud{
+    background-color: aliceblue;
+    padding: 10px;
+}
+.container-actualizacion{
+    display: none;
+}
+.container-actualizacion-view{
+    background-color: rgba(161, 152, 152, 0.4);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+.container-actualizacion form{
+    width: 70%;
+    display: flex;
+    gap: 10px;
+    
+    flex-direction: column;
+}
+.container-actualizacion form input{
+    width: 90%;
+    padding: 10PX;
+}
+.container-actualizacion form button{
+    width: 50%;
+}
+
+table tr td{
+    padding: 10px;
+}
