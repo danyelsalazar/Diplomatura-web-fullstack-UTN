@@ -6,6 +6,7 @@ const $formActualizacion = document.getElementById("formActualizacion")
 const $inputNameActualizado = document.getElementById("name-actualizado")
 const $inputEmailActualizado = document.getElementById("email-actualizado")
 const $containactualizacion = document.querySelector(".container-actualizacion")
+const $formFilter = document.getElementById("formFilter")
 
 //----------------------------------------------
 //------- 0 Renderizar lo que hay al iniciar la pagina
@@ -206,3 +207,9 @@ const cargarContactoActualizado = (contactoActualizado)=>{
 
     renderContacts() //rendererizamos la lista de contactos actualizada:
 }
+
+
+//-------------------------------------------------
+//--------- 5 funcion para buscar contacto ---------
+//-------------------------------------------------
+
