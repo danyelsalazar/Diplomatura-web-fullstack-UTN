@@ -6,6 +6,7 @@ const $formActualizacion = document.getElementById("formActualizacion")
 const $inputNameActualizado = document.getElementById("name-actualizado")
 const $inputEmailActualizado = document.getElementById("email-actualizado")
 const $containactualizacion = document.querySelector(".container-actualizacion")
+const $btnCancelarActuali = document.getElementById("cancelar-Actualizacion")
 const $formFilter = document.getElementById("formFilter")
 const $inputSearchContact = document.getElementById("search-contact")
 
@@ -186,7 +187,7 @@ $formActualizacion.addEventListener("submit", (e)=>{
     if(contactoEditar.email === contactoActualizado.email){
         cargarContactoActualizado(contactoActualizado)
     }else if(validarDatosContacto(contactoActualizado.email)){
-        console.log("actualizando con nuevo email");
+        // console.log("actualizando con nuevo email");
         cargarContactoActualizado(contactoActualizado)
     }else{
         alert("el email ya existe para otro contacto")
@@ -200,6 +201,8 @@ $formActualizacion.addEventListener("submit", (e)=>{
     contactoIdEnEdicion = null
     
 })
+//en caso de cancelar la actualizacion cerramos el formulario de actuializacion:
+$btnCancelarActuali.addEventListener("click", ()=> $containactualizacion.classList.remove("container-actualizacion-view"))
 //----proceso de carga del contacto actualizado:
 const cargarContactoActualizado = (contactoActualizado)=>{
     //creamos un nuevo arreglo com map y en la funcion modificamos el contacto si coinciden los id, si no coinciden dejamos el mismo contacto que este iterando:
@@ -220,20 +223,23 @@ const cargarContactoActualizado = (contactoActualizado)=>{
 //--------- 5 funcion para buscar contacto ---------
 //-------------------------------------------------
 
-$inputSearchContact.addEventListener("input", (e)=>{
+$inputSearchContact.addEventListener("input", ()=>{
     
     let transformInputToLowerCase = $inputSearchContact.value.toLowerCase()
 
+    //filtramos por nombre o email cualquiera de los dos
     let filtercontacts = contactos.filter((contacto)=>{
-        let contactMinuscula = contacto.name.toLowerCase()
-        if(contactMinuscula.includes(transformInputToLowerCase)){
-            return true
-        }
+        let contactMinusculaName = contacto.name.toLowerCase()
+        let contactminusculaEmail = contacto.email.toLowerCase()
+        //nos devuelve truesi cumple alguna de las condiciones o false si no cumple ninguna
+        return contactMinusculaName.includes(transformInputToLowerCase) || contactminusculaEmail.includes(transformInputToLowerCase) 
+        
     })
     // console.log(filtercontacts);
     renderContacts(filtercontacts)
 })
 
+//evito que se recargue la pagina si el usuario hace un submit
 $formFilter.addEventListener("submit", (e)=>{
     e.preventDefault()
 })
