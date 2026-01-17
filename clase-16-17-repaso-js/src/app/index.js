@@ -7,12 +7,13 @@ const $inputNameActualizado = document.getElementById("name-actualizado")
 const $inputEmailActualizado = document.getElementById("email-actualizado")
 const $containactualizacion = document.querySelector(".container-actualizacion")
 const $formFilter = document.getElementById("formFilter")
+const $inputSearchContact = document.getElementById("search-contact")
 
 //----------------------------------------------
 //------- 0 Renderizar lo que hay al iniciar la pagina
 //----------------------------------------------
 
-document.addEventListener("DOMContentLoaded", () => renderContacts())
+document.addEventListener("DOMContentLoaded", () => renderContacts(contactos))
 
 //----------------------------------------------
 //------- 1 crear nuestro arreglo de objetos 
@@ -51,7 +52,7 @@ function sendContact(e){
     }
     $form.reset()
 
-    renderContacts()
+    renderContacts(contactos)
 }
 //--------------- funcion para crear contacto ------------------
 const crearContacto = (name, email)=>{
@@ -94,17 +95,23 @@ const cargarLocalStorage = ()=>{
 //------- 3 renderizar nuestros contactos por pantalla
 //----------------------------------------------
 
-const renderContacts = ()=>{
+const renderContacts = (ListaContactos)=>{
     let bloqueAcomulado = ``
 
-    contactos.forEach((contact) =>{
-        bloqueAcomulado += `<tr>
-        <td>${contact.name}</td>
-        <td>${contact.email}</td>
-        <td><button class= "editar-contact" data-action = "editar" data-id = ${contact.id}>Editar</button>
-            <button class ="eliminar-contact" data-action = "eliminar" data-id = ${contact.id}>Eliminar</button></td> 
+    if(ListaContactos.length === 0){
+        bloqueAcomulado = `<tr>
+        <td>No se encontro el contacto</td>
         </tr>`
-    })
+    }else{
+        ListaContactos.forEach((contact) =>{
+            bloqueAcomulado += `<tr>
+            <td>${contact.name}</td>
+            <td>${contact.email}</td>
+            <td><button class= "editar-contact" data-action = "editar" data-id = ${contact.id}>Editar</button>
+                <button class ="eliminar-contact" data-action = "eliminar" data-id = ${contact.id}>Eliminar</button></td> 
+            </tr>`
+        })
+    }
     $contactsList.innerHTML = bloqueAcomulado
 }
 
@@ -133,7 +140,7 @@ const eliminarContact = (id) =>{
         let contactosRenovado = contactos.filter(contacto => contacto.id !== id);
         // console.log(contactosRenovado);
         contactos = contactosRenovado //le asignamos ese arreglo al arrelgo original
-        renderContacts()//renderizamos el contendio
+        renderContacts(contactos)//renderizamos el contendio
         cargarLocalStorage()//reflejamos el nuevo arreglo en el localStorage
     }
 }
@@ -205,7 +212,7 @@ const cargarContactoActualizado = (contactoActualizado)=>{
     
     cargarLocalStorage() //reflejamos la informacion en el localStorage
 
-    renderContacts() //rendererizamos la lista de contactos actualizada:
+    renderContacts(contactos) //rendererizamos la lista de contactos actualizada:
 }
 
 
@@ -213,3 +220,20 @@ const cargarContactoActualizado = (contactoActualizado)=>{
 //--------- 5 funcion para buscar contacto ---------
 //-------------------------------------------------
 
+$inputSearchContact.addEventListener("input", (e)=>{
+    
+    let transformInputToLowerCase = $inputSearchContact.value.toLowerCase()
+
+    let filtercontacts = contactos.filter((contacto)=>{
+        let contactMinuscula = contacto.name.toLowerCase()
+        if(contactMinuscula.includes(transformInputToLowerCase)){
+            return true
+        }
+    })
+    // console.log(filtercontacts);
+    renderContacts(filtercontacts)
+})
+
+$formFilter.addEventListener("submit", (e)=>{
+    e.preventDefault()
+})
