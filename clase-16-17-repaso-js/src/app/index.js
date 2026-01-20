@@ -220,7 +220,7 @@ const cargarContactoActualizado = (contactoActualizado)=>{
 
 
 //-------------------------------------------------
-//--------- 5 funcion para buscar contacto ---------
+//--------- 5 funcion para buscar contacto por nombre o email ---------
 //-------------------------------------------------
 
 $inputSearchContact.addEventListener("input", ()=>{
