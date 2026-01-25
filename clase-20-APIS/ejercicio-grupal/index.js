@@ -24,12 +24,6 @@ const apiClima = async (latitud, longitud) =>{
         card.classList.add("tarjeta")
 
         const h2 = document.createElement("h2")
-        if(index <= 23){
-            h2.textContent = `${fecha.getFullYear()}/${fecha.getMonth()+1}/${fecha.getDay()}`
-        }
-        else{
-            h2.textContent = `no`
-        }
 
         const p1 = document.createElement("p")
         p1.textContent = ` Hora: ${fecha.getHours()}:00`
@@ -74,7 +68,6 @@ async function apiCountries(pais, provincia){
 //-----------------------------------------
 $form.addEventListener("submit", (e)=>{
     e.preventDefault()
-
     apiCountries($inputPais.value, $inputProvincia.value)
     
 })
