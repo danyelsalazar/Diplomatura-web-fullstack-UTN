@@ -1,0 +1,50 @@
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.6rem;
+  padding: 2.5rem;
+  background: #f8fafc; /* fondo claro */
+}
+
+/* CARD */
+section > div {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 1.6rem 1.2rem;
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+section > div:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0,0,0,.12);
+}
+
+/* EMOJI */
+section h2 {
+  font-size: 3.6rem;
+  margin-bottom: 0.6rem;
+}
+
+/* NAME */
+section h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.45rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* CATEGORY & GROUP */
+section p {
+  font-size: 0.72rem;
+  color: #6b7280;
+  margin: 0.15rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+

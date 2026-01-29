@@ -32,7 +32,7 @@ const Home = ()=>{
     //ehjecuta un efecto secundario, es decir trae la data solo luego de que renderice el componente
     useEffect(()=>{
         fetchingData()
-    },{})
+    },[])
 
     return(
         <>
