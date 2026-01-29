@@ -1,0 +1,159 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE */
+body {
+  font-family: system-ui, sans-serif;
+  background-color: #f4f6f8;
+  color: #1f2937;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.container.padre {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* TITLE */
+.title {
+  text-align: center;
+  font-size: 2.3rem;
+}
+
+/* BOTÓN */
+button {
+  justify-self: center;
+  padding: 0.7rem 2rem;
+  border-radius: 999px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #1d4ed8;
+  transform: translateY(-2px);
+}
+
+/* SECCIONES GENERALES */
+section,
+article {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ARTICLE */
+article h2 {
+  margin-bottom: 0.5rem;
+  color: #0369a1;
+}
+
+/* --------------------- */
+/* PRODUCTOS */
+/* --------------------- */
+
+section ul {
+  height: 420px;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+/* CARD */
+section ul div {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+section ul div:hover {
+  transform: translateY(-5px);
+}
+
+/* IMG */
+section ul img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+}
+
+/* PRODUCT NAME */
+section ul h2 {
+  font-size: 1.1rem;
+  color: #111827;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* PRICE */
+section ul p:nth-of-type(2) {
+  ffont-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.4;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* FOOTER */
+footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 3rem;
+}
+
+/* --------------------- */
+/* DESKTOP */
+/* --------------------- */
+@media (min-width: 768px) {
+  .container.padre {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .title,
+  button {
+    grid-column: 1 / -1;
+  }
+
+  section:first-of-type,
+  article {
+    grid-column: span 1;
+  }
+
+  section:last-of-type {
+    grid-column: 1 / -1;
+  }
+}
+
