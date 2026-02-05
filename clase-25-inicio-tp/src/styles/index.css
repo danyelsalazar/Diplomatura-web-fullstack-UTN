@@ -1,0 +1,38 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.app{
+    background-color: antiquewhite;
+    height: 100dvh;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+}
+
+aside{
+    width: 30%;
+    background-color: beige;
+}
+
+section{
+    width: 70%;
+}
+
+ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+ul li{
+    background-color: azure;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+}
+small{
+    color: rgba(0, 0, 0, 0.388);
+}
