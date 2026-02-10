@@ -1,4 +1,3 @@
-import { users } from "../services/api"
 import { useEffect, useState } from "react"
 
 const Aside= ()=>{
@@ -43,9 +42,12 @@ const Aside= ()=>{
             <h1>Chat UTN</h1>
             <input type="search" placeholder="Buscar contactos..." onChange={handleChange} className="search"/>
             <ul>
+                {
+                    filterContacts.length === 0 && <li>No se encontro el contacto</li>
+                }
             {
                 filterContacts.map((contact)=>(
-                    <li>
+                    <li key={contact.id}>
                         <div className="container-img-chat">
                             <img src={contact.image} alt="" />
                         </div>
