@@ -16,12 +16,13 @@
     width: 90%;
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 aside{
     width: 40%;
     background-color: rgb(220, 220, 219);
-    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -32,11 +33,22 @@ section{
     width: 60%;
 }
 
+.container-search{
+    background-color: rgb(220, 220, 219);
+    position: sticky;
+    top: 0px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .search{
     width: 100%;
     padding: .5em;
     border: none;
     border-radius: 10px;
+    outline: none;
 }
 ul{
     display: flex;
@@ -81,24 +93,46 @@ li h3{
 small{
     color: rgba(0, 0, 0, 0.388);
 }
+.container-initial-chat{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .container-chat{
     display: grid;
-    grid-template-rows: 80px 1fr 40px;
+    grid-template-rows: 80px 1fr 60px;
 }
 .header-chat-panel{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     border-bottom: .4px solid rgb(79, 79, 79);
+}
+.header-chat-panel p{
+    color: rgb(148, 148, 148);;
 }
 .chat-body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    overflow-y: scroll;
+    overflow-y: auto;
+    padding: 10px 20px 20px 20px
 }
-
+.dayMesagge{
+    background-color: rgb(115, 119, 119);
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    border-radius: 10px;
+    color: rgb(223, 224, 224);
+    align-self: center;
+    position:sticky;
+}
 .me{
-    background-color: rgb(139, 252, 154);
+    background-color: rgb(176, 246, 185);
     align-self: flex-end;
 }
 .you{
@@ -106,17 +140,48 @@ small{
     align-self: flex-start;
 }
 
+.time{
+    color: rgb(148, 148, 148);
+    align-self: flex-end;
+    font-size: 14px;
+}
+
 .message{
     padding: 10px;
-    width: 70%;
+    max-width: 80%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: .5px solid rgb(174, 172, 172);
+}
+
+.text-message{
+    overflow-wrap:break-word;
 }
 
 textarea{
     resize: none;
-    padding: 3px;
+    padding: 10px;
+    box-sizing: border-box;
+    outline: none;
+    border-radius: 20px;
+    border: .5px solid rgb(174, 172, 172);
 }
 .sendMessage{
+    padding: 10px;
     display: grid;
     grid-template-columns: 1fr 40px;
     grid-template-rows: 1fr;
+    gap: 5px;
+}
+.button-send-message{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border: .5px solid rgb(174, 172, 172);
+}
+.button-send-message svg{
+    width: 20px;
+    height: 20px;
 }

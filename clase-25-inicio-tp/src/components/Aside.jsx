@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-const Aside= ()=>{
+const Aside= ({selectContact})=>{
 
     const [search, setSearch] = useState("")
     const [contactos, setContactos] = useState([])
@@ -33,21 +33,28 @@ const Aside= ()=>{
         
     }
 
-    const filterContacts = contactos.filter((contacto)=> contacto.firstName.toLowerCase().includes(search.toLowerCase()) || contacto.lastName.toLowerCase().includes(search.toLowerCase()))
+    const filterContacts = contactos.filter((contacto)=> {
+        const fullname = `${contacto.firstName} ${contacto.lastName}`
+
+        return(
+        contacto.firstName.toLowerCase().includes(search.toLowerCase()) || contacto.lastName.toLowerCase().includes(search.toLowerCase()) || fullname.toLocaleLowerCase().includes(search.toLocaleLowerCase()))
+    })
     // console.log(filterUsers);
     
 
     return(
         <aside>
-            <h1>Chat UTN</h1>
-            <input type="search" placeholder="Buscar contactos..." onChange={handleChange} className="search"/>
-            <ul>
+            <div className="container-search">
+                <h1>Chat UTN</h1>
+                <input type="search" placeholder="Buscar contactos..." onChange={handleChange} className="search"/>
+            </div>
+            <ul className="container-view-chats">
                 {
                     filterContacts.length === 0 && <li>No se encontro el contacto</li>
                 }
             {
                 filterContacts.map((contact)=>(
-                    <li key={contact.id}>
+                    <li key={contact.id} onClick={()=> selectContact(contact)}>
                         <div className="container-img-chat">
                             <img src={contact.image} alt="" />
                         </div>
