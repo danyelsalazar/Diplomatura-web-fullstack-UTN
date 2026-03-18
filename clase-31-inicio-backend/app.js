@@ -17,6 +17,11 @@ const pedidos = [
     {
         producto: "Samsung S23 ULTRA",
         precio: 450000
+    },
+    {
+        producto: "Nintendo ds",
+        precio: 120000
+
     }
 ]
 
@@ -27,7 +32,7 @@ let masCaros = pedidos.filter((producto) =>{
 console.log(masCaros);
 
 let menosCaro = pedidos.find( (producto)=>{
-    return producto.precio < 500000
+    return producto.precio < 500000 && !(producto.precio >= 450000)
 })
 
 console.log(menosCaro);
