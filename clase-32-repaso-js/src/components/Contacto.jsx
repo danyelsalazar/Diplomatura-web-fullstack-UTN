@@ -32,12 +32,24 @@ const Contacto = ()=>{
         
     }
 
+    const handleonClick = ()=>{
+        setFormData(prev=> (
+            {
+                ...prev,
+                confirmacion: null
+            }
+        ))
+    }
+
     return(
         <section>
             <h2>Contactanos</h2>
             {
                 formData.confirmacion
-                ? <p>Formulario enviado con exito</p>
+                ? <div>
+                    <p>Formulario enviado con exito</p>
+                    <button onClick={handleonClick}>Ver formulario de nuevo</button>
+                  </div>
                 : <form onSubmit = {handleSubmit}>
                 <input name="email" type="email" placeholder="Email" onChange={handleChange} />
                 <textarea placeholder="Tu consulta"></textarea>
