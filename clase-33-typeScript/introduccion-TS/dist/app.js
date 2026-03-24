@@ -1,0 +1,3 @@
+"use strict";
+console.log("Hola typeScript");
+console.log("probando con node");

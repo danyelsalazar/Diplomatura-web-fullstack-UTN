@@ -1,0 +1,12 @@
+{
+    "name": "clase-3",
+    "version": "1.0.0",
+    "description": "Clase 3, introduccion a nopde y TypeScript",
+    "type": "module",
+    "scripts": {
+        "dev": "node ./primera-parte/app.js",
+        "ts": "node ./introduccion-TS/app.ts",
+        "test": "node test.js",
+        "build": "node production.js"
+    }
+}
