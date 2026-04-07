@@ -65,7 +65,7 @@ router.delete("/users/:id", (req, res)=>{
 
 // Actualizacion de usuario por id
 
-router.put("users/:id", (req,res)=>{
+router.put("/users/:id", (req,res)=>{
 
     const id = Number(req.params.id);
     const {nombre, edad} = req.body;
